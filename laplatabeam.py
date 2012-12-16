@@ -1,7 +1,7 @@
 #
 #
 #	module for calculating geometry parameters and magnetic aspect
-#	angle of radar targets monitored by ALTAIR
+#	angle of radar targets monitored by laPlata AMISR
 #
 #	use aspect_elaz or aspect_txty to calculate aspect angles of targets
 #	specified by (el,az) or (tx,ty) angles
@@ -133,9 +133,9 @@ flatness=1/298.257
 b_WGS=a_WGS*(1-flatness)				# WGS polar radius
 eccentricity=sqrt(a_WGS**2-b_WGS**2)/a_WGS
 
-# ------------ ALTAIR specifications -------------------------
-lat0=9.3935605*deg						# geodetic, the usual map or GPS latitude	
-lon0=167.4763514*deg						# east of Greenwich	
+# ------------ radar specifications -------------------------
+lat0=(33+51/60.+57.6/3600.)*deg					
+lon0=-(58+8/60.+11.04/3600.)*deg
 h0=0.							# local height above reference ellipsoid
 n0=a_WGS/sqrt(1-flatness*(2-flatness)*sin(lat0)**2.)
 x0=(n0+h0)*cos(lat0)*cos(lon0)			# cartesian geocentric coordinates wrt Greenwich
@@ -146,7 +146,7 @@ xy0=array([x0,y0])
 r0=sqrt(dot(xyz0,xyz0))
 p0=sqrt(dot(xy0,xy0))
 
-# unit vectors from ALTAIR
+# unit vectors from radar 
 east0=array([-y0,x0,0])/p0				# zenith and north directions wrt local ellipsoid
 zenith0=array([cos(lat0)*cos(lon0),cos(lat0)*sin(lon0),sin(lat0)])
 north0=cross(zenith0,east0)	

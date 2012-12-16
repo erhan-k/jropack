@@ -1,7 +1,7 @@
 #
 #
 #	module for calculating geometry parameters and magnetic aspect
-#	angle of radar targets monitored by ALTAIR
+#	angle of radar targets monitored by IRIS
 #
 #	use aspect_elaz or aspect_txty to calculate aspect angles of targets
 #	specified by (el,az) or (tx,ty) angles
@@ -133,9 +133,9 @@ flatness=1/298.257
 b_WGS=a_WGS*(1-flatness)				# WGS polar radius
 eccentricity=sqrt(a_WGS**2-b_WGS**2)/a_WGS
 
-# ------------ ALTAIR specifications -------------------------
-lat0=9.3935605*deg						# geodetic, the usual map or GPS latitude	
-lon0=167.4763514*deg						# east of Greenwich	
+# ------------ IRIS radar specifications -------------------------
+lat0=(40+10/60.+0.61/3600.)*deg					# geodetic, the usual map or GPS latitude	
+lon0=-(88+9/60.+30.95/3600.)*deg					# east of Greenwich	
 h0=0.							# local height above reference ellipsoid
 n0=a_WGS/sqrt(1-flatness*(2-flatness)*sin(lat0)**2.)
 x0=(n0+h0)*cos(lat0)*cos(lon0)			# cartesian geocentric coordinates wrt Greenwich
@@ -146,7 +146,7 @@ xy0=array([x0,y0])
 r0=sqrt(dot(xyz0,xyz0))
 p0=sqrt(dot(xy0,xy0))
 
-# unit vectors from ALTAIR
+# unit vectors from IRIS 
 east0=array([-y0,x0,0])/p0				# zenith and north directions wrt local ellipsoid
 zenith0=array([cos(lat0)*cos(lon0),cos(lat0)*sin(lon0),sin(lat0)])
-north0=cross(zenith0,east0)	
+north0=cross(zenith0,east0)							# away from the building into the valley
