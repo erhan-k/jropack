@@ -1,9 +1,2 @@
-public repo at:
-remote.csl.illinois.edu:~erhan/git/jropack.git
-Contains IGRF module as well as geometry modules
-for JRO and ALTAIR.
-
-at mac use github.app to manage my git repositories
-Attempt to push from remote itself.
-One more change.
+jrotools contains jroread and igrf modules for JRO and ALTAIR 
 
