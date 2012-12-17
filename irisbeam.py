@@ -136,7 +136,7 @@ eccentricity=sqrt(a_WGS**2-b_WGS**2)/a_WGS
 # ------------ IRIS radar specifications -------------------------
 lat0=(40+10/60.+0.61/3600.)*deg					# geodetic, the usual map or GPS latitude	
 lon0=-(88+9/60.+30.95/3600.)*deg					# east of Greenwich	
-h0=0.							# local height above reference ellipsoid
+h0=221./1000.							# local height above reference ellipsoid
 n0=a_WGS/sqrt(1-flatness*(2-flatness)*sin(lat0)**2.)
 x0=(n0+h0)*cos(lat0)*cos(lon0)			# cartesian geocentric coordinates wrt Greenwich
 y0=(n0+h0)*cos(lat0)*sin(lon0)
